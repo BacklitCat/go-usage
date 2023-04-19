@@ -33,6 +33,9 @@ func main() {
 			defer wg.Done()
 			// 申请一个 buffer 实例
 			buffer := bufferPool.Get()
+
+			// 若不用Pool 效率低开销大： buffer := createBuffer()
+
 			_ = buffer.(*[]byte)
 			// 释放一个 buffer 实例
 			defer bufferPool.Put(buffer)
